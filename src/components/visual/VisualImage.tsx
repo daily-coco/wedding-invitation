@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const VisualImage = () => {
   return (
     <VisualSection>
-      <VisualTitle>{customText}</VisualTitle>
+      <VisualTitle></VisualTitle>
       <VisualContent></VisualContent>
     </VisualSection>
   );
