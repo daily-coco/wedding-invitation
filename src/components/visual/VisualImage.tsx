@@ -1,10 +1,20 @@
 import styled from 'styled-components';
 
-const VisualImage = () => {
+interface VisualImageProps {
+  imageUrl: string;
+  title?: string;
+  date?: string;
+  place?: string;
+}
+
+const VisualImage = ({ imageUrl, title, date, place }: VisualImageProps) => {
   return (
-    <VisualSection>
-      <VisualTitle></VisualTitle>
-      <VisualContent></VisualContent>
+    <VisualSection style={{ backgroundImage: `url(${imageUrl})` }}>
+      <Content>
+        <Title>{title}</Title>
+        <Date>{date}</Date>
+        <Place>{place}</Place>
+      </Content>
     </VisualSection>
   );
 };
@@ -20,6 +30,13 @@ const VisualSection = styled.section`
   position: relative;
   width: 100%;
   height: 100vh;
+  background-position: center center;
 `;
-const VisualTitle = styled.h1``;
-const VisualContent = styled.div``;
+const Title = styled.h1``;
+const Date = styled.h2``;
+const Content = styled.div`
+  position: absolute;
+  top: 5%;
+  left: 5%;
+`;
+const Place = styled.span``;

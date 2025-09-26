@@ -27,7 +27,6 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
    body {
-    display: flex;
     margin: 0;
     min-width: 260px;
     min-height: 100vh;
