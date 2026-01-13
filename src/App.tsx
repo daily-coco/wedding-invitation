@@ -6,6 +6,7 @@ import Calendar from './components/calendar/Calendar';
 
 import { WEDDING_INFO, HOSTS_DATA } from './constants/wedding';
 import { formatDotYMD } from './utils/date';
+import Gallery from './components/gallery/Gallery';
 
 function App() {
   const weddingDate = new Date(WEDDING_INFO.dateTime);
@@ -14,7 +15,7 @@ function App() {
     <>
       <Wrapper>
         <VisualImage
-          imageUrl={'/images/250925_wedding_ai1.png'}
+          imageUrl={'/src/assets/images/250925_wedding_1.png'}
           title={WEDDING_INFO.title}
           date={formatDotYMD(weddingDate)}
           place={WEDDING_INFO.place}
@@ -27,6 +28,7 @@ function App() {
         />
         <Hosts data={HOSTS_DATA} />
         <Calendar dateTime={WEDDING_INFO.dateTime} />
+        <Gallery title={''} />
       </Wrapper>
     </>
   );
