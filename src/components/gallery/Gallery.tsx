@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import './gallery.css';
 import { type ImgBasic } from '../../types/common';
-import LayerPopup from './LayerPopup';
+import Lightbox from './Lightbox';
 
 const modules = import.meta.glob(
   '/src/assets/images/**/*.{png,jpg,jpeg,svg,webp}',
@@ -67,7 +67,8 @@ export default function GalleryStep3() {
             type='button'
             className='thumb'
             onClick={() => setOpenIndex(idx)}
-            aria-label={`Open ${img.fileBase}`}
+            aria-haspopup='dialog'
+            aria-label={`${img.fileBase} 크게 보기`}
           >
             <img src={img.src} alt={img.fileBase} loading='lazy' />
             <span className='thumb__cap'>{img.fileBase}</span>
@@ -76,7 +77,7 @@ export default function GalleryStep3() {
       </div>
 
       {openIndex !== null && (
-        <LayerPopup
+        <Lightbox
           images={images}
           index={openIndex}
           onClose={() => setOpenIndex(null)}
