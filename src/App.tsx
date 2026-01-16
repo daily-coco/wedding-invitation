@@ -11,6 +11,7 @@ import Map from './components/map/Map';
 
 // images
 import weddingCover from './assets/images/wedding/250925_wedding_1.png';
+import AccountInfo from './components/account/AccountInfo';
 
 function App() {
   const weddingDate = new Date(WEDDING_INFO.dateTime);
@@ -34,6 +35,7 @@ function App() {
         <Calendar dateTime={WEDDING_INFO.dateTime} />
         <Gallery title={''} />
         <Map title={'오시는 길'} />
+        <AccountInfo />
       </Wrapper>
     </>
   );
