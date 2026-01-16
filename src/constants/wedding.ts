@@ -18,3 +18,11 @@ export const HOSTS_DATA = [
     principalSon: '차녀',
   },
 ];
+
+export const WEDDING_VENUE_INFO = {
+  name: '삼청각',
+  tel: '02-765-3000',
+  address: '서울특별시 성북구 대사관로 3 (성북동 330-115번지) 삼청각',
+  naverMapLink:
+    'https://map.naver.com/p/directions/-/14135823.3512038,4522681.1084032,%EC%82%BC%EC%B2%AD%EA%B0%81,11569723,PLACE_POI/-/transit?c=15.00,0,0,0,dh',
+};

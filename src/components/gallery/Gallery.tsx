@@ -4,7 +4,7 @@ import { type ImgBasic } from '../../types/common';
 import Lightbox from './Lightbox';
 
 const modules = import.meta.glob(
-  '/src/assets/images/**/*.{png,jpg,jpeg,svg,webp}',
+  '/src/assets/images/wedding/**/*.{png,jpg,jpeg,svg,webp}',
   {
     eager: true,
     import: 'default',

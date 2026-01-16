@@ -7,6 +7,10 @@ import Calendar from './components/calendar/Calendar';
 import { WEDDING_INFO, HOSTS_DATA } from './constants/wedding';
 import { formatDotYMD } from './utils/date';
 import Gallery from './components/gallery/Gallery';
+import Map from './components/map/Map';
+
+// images
+import weddingCover from './assets/images/wedding/250925_wedding_1.png';
 
 function App() {
   const weddingDate = new Date(WEDDING_INFO.dateTime);
@@ -15,7 +19,7 @@ function App() {
     <>
       <Wrapper>
         <VisualImage
-          imageUrl={'/src/assets/images/250925_wedding_1.png'}
+          imageUrl={weddingCover}
           title={WEDDING_INFO.title}
           date={formatDotYMD(weddingDate)}
           place={WEDDING_INFO.place}
@@ -29,6 +33,7 @@ function App() {
         <Hosts data={HOSTS_DATA} />
         <Calendar dateTime={WEDDING_INFO.dateTime} />
         <Gallery title={''} />
+        <Map title={'오시는 길'} />
       </Wrapper>
     </>
   );
