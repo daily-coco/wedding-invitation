@@ -1,0 +1,180 @@
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (min-width: 640px) {
+  .galleryGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .galleryGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.thumb {
+  position: relative;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.thumb img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  transform: scale(1);
+  transition: transform 160ms ease;
+}
+
+.thumb:hover img {
+  transform: scale(1.03);
+}
+
+.thumb__cap {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0; /* ☑️  */
+  background: rgba(0, 0, 0, 0.72);
+  display: grid;
+  place-items: center; /* ☑️  */
+  padding: 24px;
+  z-index: 9999;
+  /* ✅ 닫기/열기 애니메이션 기반 */
+  opacity: 1;
+  transition: opacity 180ms ease;
+}
+
+.lightbox__content {
+  position: relative;
+  width: min(980px, 100%); /* ☑️  */
+  display: grid;
+  grid-template-columns: 44px 1fr 44px; /* ☑️  */
+  align-items: center;
+  gap: 12px;
+  transform: translateY(0) scale(1);
+  transition: transform 180ms ease;
+}
+.lightbox__img {
+  width: 100%;
+  height: min(72vh, 720px);
+  object-fit: contain;
+  display: block;
+  opacity: 1;
+  transition: opacity 160ms ease;
+}
+
+.lightbox__img.isLoading {
+  opacity: 0;
+}
+.lightbox__figure {
+  position: relative;
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #111;
+}
+
+.lightbox__figure img {
+  width: 100%;
+  height: min(72vh, 720px);
+  object-fit: contain;
+  display: block;
+}
+
+.lightbox__figure figcaption {
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #ddd;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.lightbox__nav {
+  height: 44px;
+  width: 44px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+.lightbox.isClosing {
+  opacity: 0;
+}
+
+.lightbox.isClosing .lightbox__content {
+  transform: translateY(6px) scale(0.985);
+}
+
+/* ✅ 스켈레톤 */
+.lightbox__skeleton {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.lightbox__skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+  animation: shimmer 900ms infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ✅ 모션 민감 사용자 배려 */
+@media (prefers-reduced-motion: reduce) {
+  .lightbox,
+  .lightbox__content,
+  .lightbox__img,
+  .lightbox__skeleton::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
