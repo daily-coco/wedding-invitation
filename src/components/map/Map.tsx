@@ -7,7 +7,7 @@ import { Transport } from './Transport';
 
 function Map({ title }: mapInfoData) {
   return (
-    <>
+    <section>
       <h1>{title}</h1>
       <div className='map_nav'>
         <img
@@ -29,7 +29,7 @@ function Map({ title }: mapInfoData) {
       <Transport transportType='bus' />
       <Transport transportType='metro' />
       <Transport transportType='shuttle' />
-    </>
+    </section>
   );
 }
 
