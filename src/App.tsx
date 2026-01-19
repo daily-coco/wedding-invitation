@@ -2,30 +2,22 @@ import styled from 'styled-components';
 import VisualImage from './components/visual/VisualImage';
 import Invitation from './components/Invitation/Invitation';
 import Hosts from './components/Invitation/Hosts';
+import Calendar from './components/calendar/Calendar';
 
-const hostsData = [
-  {
-    father: '홍길동',
-    mother: '이효자',
-    principal: '홍규석',
-    principalSon: '장남',
-  },
-  {
-    father: '고길동',
-    mother: '김윤자',
-    principal: '고지윤',
-    principalSon: '차녀',
-  },
-];
+import { WEDDING_INFO, HOSTS_DATA } from './constants/wedding';
+import { formatDotYMD } from './utils/date';
+
 function App() {
+  const weddingDate = new Date(WEDDING_INFO.dateTime);
+
   return (
     <>
       <Wrapper>
         <VisualImage
           imageUrl={'/images/250925_wedding_ai1.png'}
-          title={'저희 결혼합니다.'}
-          date={'2027.4.13'}
-          place={'한옥마을 야외 예식홀'}
+          title={WEDDING_INFO.title}
+          date={formatDotYMD(weddingDate)}
+          place={WEDDING_INFO.place}
         />
         <Invitation
           introTitle='초대합니다'
@@ -33,7 +25,8 @@ function App() {
         두 사람이 걸어온 길, 이제 하나로 이어집니다.
         따뜻한 마음으로 축복해 주신다면, 저희의 시작이 더욱 빛날 것입니다.`}
         />
-        <Hosts data={hostsData} />
+        <Hosts data={HOSTS_DATA} />
+        <Calendar dateTime={WEDDING_INFO.dateTime} />
       </Wrapper>
     </>
   );
