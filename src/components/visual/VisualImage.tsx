@@ -7,13 +7,13 @@ interface VisualImageProps {
   place?: string;
 }
 
-const VisualImage = ({ imageUrl, title, date, place }: VisualImageProps) => {
+const VisualImage = ({ ...props }: VisualImageProps) => {
   return (
-    <VisualSection style={{ backgroundImage: `url(${imageUrl})` }}>
+    <VisualSection style={{ backgroundImage: `url(${props.imageUrl})` }}>
       <Content>
-        <Title>{title}</Title>
-        <Date>{date}</Date>
-        <Place>{place}</Place>
+        <Title>{props.title}</Title>
+        <Date>{props.date}</Date>
+        <Place>{props.place}</Place>
       </Content>
     </VisualSection>
   );
