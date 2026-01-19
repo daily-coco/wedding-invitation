@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import VisualImage from './components/visual/VisualImage';
 import Invitation from './components/Invitation/Invitation';
 import Hosts from './components/Invitation/Hosts';
@@ -62,6 +62,14 @@ export default App;
 
 const Wrapper = styled.main`
   position: relative;
-  max-width: 600px;
   margin: 0 auto;
+  width: 100%;
+  max-width: ${({ theme }) => theme.layout.maxWidth};
+  padding-left: ${({ theme }) => theme.layout.pagePaddingX};
+  padding-right: ${({ theme }) => theme.layout.pagePaddingX};
+  /* FadeInSection 래퍼 안의 실제 section에 공통 세로 패딩 */
+  [data-fade-section] > section {
+    padding-top: ${({ theme }) => theme.space[10]};
+    padding-bottom: ${({ theme }) => theme.space[10]};
+  }
 `;

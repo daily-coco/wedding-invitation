@@ -31,7 +31,10 @@ function extractOrder(fileBase: string) {
   return Number.isFinite(n) ? n : null;
 }
 
-export default function GalleryStep3() {
+type Props = {
+  title?: string;
+};
+export default function Gallery({ title }: Props) {
   const images: ImgBasic[] = useMemo(() => {
     return Object.entries(modules)
       .map(([path, src]) => {
@@ -57,7 +60,7 @@ export default function GalleryStep3() {
 
   return (
     <section>
-      <h2>STEP 3: Grid + Lightbox</h2>
+      {title && <h2>{title}</h2>}
       <p>총 {images.length}장</p>
 
       <div className='galleryGrid'>
@@ -71,7 +74,7 @@ export default function GalleryStep3() {
             aria-label={`${img.fileBase} 크게 보기`}
           >
             <img src={img.src} alt={img.fileBase} loading='lazy' />
-            <span className='thumb__cap'>{img.fileBase}</span>
+            {/* <span className='thumb__cap'>{img.fileBase}</span> */}
           </button>
         ))}
       </div>

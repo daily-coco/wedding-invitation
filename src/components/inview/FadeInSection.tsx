@@ -23,6 +23,7 @@ const FadeInSection = ({
   return (
     <div
       ref={ref}
+      data-fade-section
       className={[
         'fade-section',
         inView ? 'is-visible' : '',
