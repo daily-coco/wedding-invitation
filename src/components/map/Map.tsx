@@ -4,6 +4,7 @@ type mapInfoData = {
 import mapNavImg from '/src/assets/images/map/map-inner.jpg';
 import { WEDDING_VENUE_INFO } from '../../constants/wedding';
 import { Transport } from './Transport';
+import { Text } from '../text/Text';
 
 function Map({ title }: mapInfoData) {
   return (
@@ -29,6 +30,9 @@ function Map({ title }: mapInfoData) {
       <Transport transportType='bus' />
       <Transport transportType='metro' />
       <Transport transportType='shuttle' />
+      <Text as='p' variant='caption'>
+        ※ 주차 공간이 협소합니다.
+      </Text>
     </section>
   );
 }

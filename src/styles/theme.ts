@@ -16,21 +16,29 @@ export const theme = {
   },
   layout: {
     maxWidth: '45rem', // 720px (760px = 47.5rem)
-    pagePaddingX: '1.25rem',
+    // pagePaddingX: '1.25rem',
   },
   bp: {
     md: 768,
     lg: 1024,
   },
   typography: {
+    title: {
+      lg: { fontSize: '2rem', fontWeight: 700, lineHeight: '1.5' },
+      md: { fontSize: '1.5rem', fontWeight: 700, lineHeight: '1.5' },
+      sm: { fontSize: '1.25rem', fontWeight: 600, lineHeight: '1.5' },
+    },
+    text: {
+      lg: { fontSize: '1.125rem', fontWeight: 400, lineHeight: '1.35' }, //18px
+      md: { fontSize: '1rem', fontWeight: 400, lineHeight: '1.35' },
+      sm: { fontSize: '0.875rem', fontWeight: 400, lineHeight: '1.35' },
+    },
+    caption: {
+      md: { fontSize: '0.75rem', fontWeight: 400, lineHeight: '1.25' },
+    },
     body: {
       fontSize: '1rem', //16px
       lineHeight: 1.6,
-      fontWeight: 400,
-    },
-    caption: {
-      fontSize: '0.875rem',
-      lineHeight: 1.5,
       fontWeight: 400,
     },
     h4: {
