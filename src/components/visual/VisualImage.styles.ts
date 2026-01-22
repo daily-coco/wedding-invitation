@@ -13,7 +13,6 @@ export const VisualSection = styled.section<{ $imageUrl: string }>`
   background-size: cover;
   background-repeat: no-repeat;
 `;
-export const Title = styled.h1``;
 export const DateText = styled(Text).attrs({
   as: 'span',
   variant: 'text.md',

@@ -17,6 +17,11 @@ export const theme = {
   layout: {
     maxWidth: '45rem', // 720px (760px = 47.5rem)
     // pagePaddingX: '1.25rem',
+    section: '1.25rem',
+  },
+  sections: {
+    invitation: '5rem 0 0',
+    hosts: '2rem 0 0',
   },
   bp: {
     md: 768,

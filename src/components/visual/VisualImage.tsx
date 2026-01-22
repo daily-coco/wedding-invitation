@@ -1,11 +1,5 @@
 import { Text } from '../text/Text';
-import {
-  VisualSection,
-  Content,
-  Title,
-  DateText,
-  Place,
-} from './VisualImage.styles';
+import { VisualSection, Content, DateText } from './VisualImage.styles';
 interface VisualImageProps {
   imageUrl: string;
   title?: string;

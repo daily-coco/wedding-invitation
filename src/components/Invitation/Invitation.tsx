@@ -1,4 +1,9 @@
-import styled from 'styled-components';
+import {
+  InvitationContent,
+  InvitationTitle,
+  InvitationWrapper,
+} from './Invitation.styles.ts';
+
 interface InvitationProps {
   introTitle?: string;
   contents?: string;
@@ -7,14 +12,14 @@ interface InvitationProps {
 const Invitation = ({ ...props }: InvitationProps) => {
   return (
     <InvitationWrapper>
-      <Intro>{props.introTitle}</Intro>
-      <Content>{props.contents}</Content>
+      {props.introTitle && (
+        <InvitationTitle>{props.introTitle}</InvitationTitle>
+      )}
+      {props.contents && (
+        <InvitationContent>{props.contents}</InvitationContent>
+      )}
     </InvitationWrapper>
   );
 };
 
 export default Invitation;
-
-const InvitationWrapper = styled.section``;
-const Intro = styled.h2``;
-const Content = styled.h2``;

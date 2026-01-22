@@ -1,7 +1,20 @@
+// images
+import weddingCover from '../assets/images/wedding/250925_wedding_1.png';
+
+export const WEDDING_VISUAL_IMAGE = {
+  topCover: weddingCover,
+};
+
 export const WEDDING_INFO = {
   title: '저희 결혼합니다.',
   place: '한옥 마을 야외 예식홀',
   dateTime: '2027-10-10T11:30:00', // ISO 권장
+};
+
+export const WEDDING_INTRO = {
+  title: '초대합니다',
+  content:
+    '소중한 분들을 저희의 특별한 날에 초대합니다.두 사람이 걸어온 길, 이제 하나로 이어집니다. 따뜻한 마음으로 축복해 주신다면, 저희의 시작이 더욱 빛날 것입니다.',
 };
 
 export const HOSTS_DATA = [
@@ -18,6 +31,14 @@ export const HOSTS_DATA = [
     principalSon: '차녀',
   },
 ];
+
+export const WEDDING_GALLERY = {
+  title: '',
+};
+
+export const WEDDING_MAP = {
+  title: '',
+};
 
 export const WEDDING_VENUE_INFO = {
   name: '삼청각',

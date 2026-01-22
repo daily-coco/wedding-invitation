@@ -35,6 +35,7 @@ export const GlobalStyle = createGlobalStyle`
     min-width: 260px;
     min-height: 100vh;
     min-height: 100dvh;
+    word-break: keep-all;
   }
 
   /* 기본 요소 안정화 */

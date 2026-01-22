@@ -1,5 +1,22 @@
-import styled from 'styled-components';
 import { getDDay } from '../../constants/dDay';
+import {
+  CalendarBody,
+  CalendarDate,
+  CalendarDday,
+  CalendarDdayCount,
+  CalendarDdayText,
+  CalendarTable,
+  CalendarWrapper,
+  TableCaption,
+  TableCell,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
+  TableTbody,
+  TimeDay,
+  TimeInfo,
+  TimeYear,
+} from './Calendar.styled';
 
 interface CalendarDataProps {
   dateTime: string;
@@ -71,17 +88,23 @@ const Calendar = ({ dateTime }: CalendarDataProps) => {
 
   return (
     <CalendarWrapper>
+      <CalendarDday>
+        <CalendarDdayText>
+          신랑&middot;신부의 <br />
+          빛나는 결혼식이
+          <CalendarDdayCount>D-{weddingDDay}</CalendarDdayCount>일 남았습니다.
+        </CalendarDdayText>
+      </CalendarDday>
+
       <CalendarDate>
-        <time>
-          <span>{`${year}년 ${month}월 ${selectedDate}일`}</span>
-          <span>{weekday}</span>
-          <span>{time}</span>
-        </time>
+        <TimeYear>{`${year}년 ${month}월 ${selectedDate}일`}</TimeYear>
+        <TimeDay>{weekday}</TimeDay>
+        <TimeInfo>{time}</TimeInfo>
       </CalendarDate>
 
       <CalendarBody>
         <CalendarTable>
-          <TableCaption>{`${month}월 달력`}</TableCaption>
+          <TableCaption>{`${month}월`}</TableCaption>
           <TableHeader>
             <TableRow>
               {daysOfWeek.map((week) => (
@@ -108,70 +131,8 @@ const Calendar = ({ dateTime }: CalendarDataProps) => {
           </TableTbody>
         </CalendarTable>
       </CalendarBody>
-      <CalendarDday>
-        <CalendarDdayText>
-          신랑&middot;신부의 빛나는 결혼식이
-          <CalendarDdayCount>D-{weddingDDay}</CalendarDdayCount>일 남았습니다.
-        </CalendarDdayText>
-      </CalendarDday>
     </CalendarWrapper>
   );
 };
 
 export default Calendar;
-
-const CalendarWrapper = styled.section``;
-const CalendarDate = styled.div``;
-const CalendarBody = styled.div``;
-const CalendarTable = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-`;
-
-const TableHeader = styled.thead`
-  background: #f9f9f9;
-`;
-const TableCaption = styled.caption``;
-const TableRow = styled.tr``;
-const TableHeaderCell = styled.th`
-  padding: 8px;
-  font-weight: bold;
-  text-align: center;
-`;
-const TableTbody = styled.tbody``;
-
-const TableCell = styled.td<{ isSelected?: boolean }>`
-  padding: 12px;
-  text-align: center;
-  border: 1px solid #eee;
-  cursor: pointer;
-
-  ${({ isSelected }) =>
-    isSelected &&
-    `
-    background: #ffebee;     /* 연한 포인트 색 */
-    color: #d32f2f;          /* 글자색 강조 */
-    font-weight: bold;
-    border-radius: 50%;      /* 원형 하이라이트 */
-  `}
-
-  &:hover {
-    background: #f5f5f5;
-  }
-`;
-const CalendarDday = styled.div`
-  padding: 12px;
-  text-align: center;
-`;
-
-const CalendarDdayText = styled.p`
-  font-size: 16px;
-  font-weight: 500;
-`;
-
-const CalendarDdayCount = styled.strong`
-  font-size: 21px;
-  font-weight: 600;
-  color: #fb80e2;
-`;
