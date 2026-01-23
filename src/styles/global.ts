@@ -38,6 +38,13 @@ export const GlobalStyle = createGlobalStyle`
     word-break: keep-all;
   }
 
+  button {
+    cursor: pointer;
+    border:0;
+    background: transparent;
+  }
+
+
   /* 기본 요소 안정화 */
   img, picture, video, canvas, svg {
     display: block;

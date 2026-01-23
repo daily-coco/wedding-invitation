@@ -23,7 +23,7 @@ export const theme = {
     invitation: '5rem 0 0',
     hosts: '2rem 0 0',
   },
-  bp: {
+  breakpoint: {
     md: 768,
     lg: 1024,
   },
@@ -66,6 +66,10 @@ export const theme = {
       lineHeight: 1.2,
       fontWeight: 500,
     },
+  },
+  zIndex: {
+    nav: 100,
+    lightbox: 100,
   },
 } as const;
 export type AppTheme = typeof theme;

@@ -1,4 +1,4 @@
-import Wrapper from './components/layout/MainLayout/MainLayout';
+import MainLayout from './components/layout/MainLayout/MainLayout';
 import VisualImage from './components/visual/VisualImage';
 import Invitation from './components/Invitation/Invitation';
 import Hosts from './components/Invitation/Hosts';
@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-      <Wrapper>
+      <MainLayout>
         <FadeInSection>
           <VisualImage
             imageUrl={WEDDING_VISUAL_IMAGE.topCover}
@@ -57,7 +57,7 @@ function App() {
         <FadeInSection>
           <AccountInfo />
         </FadeInSection>
-      </Wrapper>
+      </MainLayout>
     </>
   );
 }

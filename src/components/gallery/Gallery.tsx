@@ -1,39 +1,27 @@
 import { useMemo, useState } from 'react';
-import './gallery.css';
+
+import {
+  GalleryCount,
+  GalleryGrid,
+  GalleryImage,
+  GalleryThumbnail,
+  GalleryTitle,
+  GalleryWrap,
+} from './Gallery.styled';
 import { type ImgBasic } from '../../types/common';
+
+import {
+  extractOrder,
+  fileBaseFromPath,
+  modules,
+} from '../../constants/gallery';
 import Lightbox from './Lightbox';
-
-const modules = import.meta.glob(
-  '/src/assets/images/wedding/**/*.{png,jpg,jpeg,svg,webp}',
-  {
-    eager: true,
-    import: 'default',
-  }
-) as Record<string, string>;
-console.log(Object.keys(modules));
-
-// 확장자 제거
-function stripExt(filename: string) {
-  return filename.replace(/\.[^.]+$/, '');
-}
-
-// path에서 파일명뽑기
-function fileBaseFromPath(path: string) {
-  const base = path.split('/').pop() ?? path;
-  return stripExt(base);
-}
-
-// 파일명에서 끝 숫자 추출
-function extractOrder(fileBase: string) {
-  const m = fileBase.match(/(?:^|[_-])(\d+)$/);
-  if (!m) return null;
-  const n = Number(m[1]);
-  return Number.isFinite(n) ? n : null;
-}
+import LightboxPortal from './LightboxPortal';
 
 type Props = {
   title?: string;
 };
+
 export default function Gallery({ title }: Props) {
   const images: ImgBasic[] = useMemo(() => {
     return Object.entries(modules)
@@ -59,34 +47,35 @@ export default function Gallery({ title }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section>
-      {title && <h2>{title}</h2>}
-      <p>총 {images.length}장</p>
+    <GalleryWrap>
+      {title && <GalleryTitle>{title}</GalleryTitle>}
 
-      <div className='galleryGrid'>
+      <GalleryCount>총 {images.length}장</GalleryCount>
+
+      <GalleryGrid>
         {images.map((img, idx) => (
-          <button
+          <GalleryThumbnail
             key={img.path}
-            type='button'
-            className='thumb'
             onClick={() => setOpenIndex(idx)}
             aria-haspopup='dialog'
             aria-label={`${img.fileBase} 크게 보기`}
           >
-            <img src={img.src} alt={img.fileBase} loading='lazy' />
+            <GalleryImage src={img.src} alt={img.fileBase} loading='lazy' />
             {/* <span className='thumb__cap'>{img.fileBase}</span> */}
-          </button>
+          </GalleryThumbnail>
         ))}
-      </div>
+      </GalleryGrid>
 
       {openIndex !== null && (
-        <Lightbox
-          images={images}
-          index={openIndex}
-          onClose={() => setOpenIndex(null)}
-          onChange={(n) => setOpenIndex(n)}
-        />
+        <LightboxPortal>
+          <Lightbox
+            images={images}
+            index={openIndex}
+            onClose={() => setOpenIndex(null)}
+            onChange={(n) => setOpenIndex(n)}
+          />
+        </LightboxPortal>
       )}
-    </section>
+    </GalleryWrap>
   );
 }
