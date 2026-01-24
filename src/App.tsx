@@ -21,6 +21,7 @@ import {
   WEDDING_MAP,
   WEDDING_VISUAL_IMAGE,
 } from './constants/wedding';
+import { Footer } from './components/layout/Footer';
 
 function App() {
   const weddingDate = new Date(WEDDING_INFO.dateTime);
@@ -57,6 +58,7 @@ function App() {
         <FadeInSection>
           <AccountInfo />
         </FadeInSection>
+        <Footer />
       </MainLayout>
     </>
   );

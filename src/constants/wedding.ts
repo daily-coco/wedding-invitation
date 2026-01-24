@@ -1,5 +1,6 @@
 // images
 import weddingCover from '../assets/images/wedding/250925_wedding_1.png';
+import mapNavImg from '../assets/images/map/map-inner.jpg';
 
 export const WEDDING_VISUAL_IMAGE = {
   topCover: weddingCover,
@@ -37,7 +38,8 @@ export const WEDDING_GALLERY = {
 };
 
 export const WEDDING_MAP = {
-  title: '',
+  title: '예식장 오시는 길',
+  mapImg: mapNavImg,
 };
 
 export const WEDDING_VENUE_INFO = {

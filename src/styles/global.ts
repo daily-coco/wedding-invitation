@@ -37,6 +37,10 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100dvh;
     word-break: keep-all;
   }
+  
+  i , em, address {
+    font-style: normal;
+  }
 
   button {
     cursor: pointer;

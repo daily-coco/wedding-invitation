@@ -1,24 +1,36 @@
 type mapInfoData = {
   title?: string;
 };
-import mapNavImg from '/src/assets/images/map/map-inner.jpg';
-import { WEDDING_VENUE_INFO } from '../../constants/wedding';
+
+import { WEDDING_MAP, WEDDING_VENUE_INFO } from '../../constants/wedding';
 import { Transport } from './Transport';
 import { Text } from '../text/Text';
+import {
+  MapImg,
+  MapImgWrap,
+  MapTitle,
+  MapWrapper,
+  VenueAddress,
+  VenueTel,
+} from './map.styled';
 
 function Map({ title }: mapInfoData) {
   return (
-    <section>
-      <h1>{title}</h1>
-      <div className='map_nav'>
-        <img
-          src={mapNavImg}
+    <MapWrapper>
+      {title && <MapTitle>{title}</MapTitle>}
+      <MapImgWrap>
+        <MapImg
+          src={WEDDING_MAP.mapImg}
           alt={`${WEDDING_VENUE_INFO.name} 오시는 길 약도`}
         />
-      </div>
-      <address>{WEDDING_VENUE_INFO.address}</address>
-      문의전화 :{' '}
-      <a href={`tel:${WEDDING_VENUE_INFO.tel}`}>{WEDDING_VENUE_INFO.tel}</a>
+      </MapImgWrap>
+      <VenueAddress>{WEDDING_VENUE_INFO?.address}</VenueAddress>
+      <VenueTel>
+        문의전화 :
+        <a href={`tel:${WEDDING_VENUE_INFO.tel}`} title='웨딩홀로 전화걸기'>
+          {WEDDING_VENUE_INFO.tel}
+        </a>
+      </VenueTel>
       <a
         href={`${WEDDING_VENUE_INFO.naverMapLink}`}
         target='_blank'
@@ -30,10 +42,10 @@ function Map({ title }: mapInfoData) {
       <Transport transportType='bus' />
       <Transport transportType='metro' />
       <Transport transportType='shuttle' />
-      <Text as='p' variant='caption'>
+      <Text as='p' variant='text.sm'>
         ※ 주차 공간이 협소합니다.
       </Text>
-    </section>
+    </MapWrapper>
   );
 }
 

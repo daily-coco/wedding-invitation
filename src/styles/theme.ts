@@ -1,3 +1,5 @@
+import { background } from 'storybook/internal/theming';
+
 export const theme = {
   space: {
     0: '0',
@@ -32,6 +34,7 @@ export const theme = {
       lg: { fontSize: '2rem', fontWeight: 700, lineHeight: '1.5' },
       md: { fontSize: '1.5rem', fontWeight: 700, lineHeight: '1.5' },
       sm: { fontSize: '1.25rem', fontWeight: 600, lineHeight: '1.5' },
+      xs: { fontSize: '1.125rem', fontWeight: 600, lineHeight: '1.5' },
     },
     text: {
       lg: { fontSize: '1.125rem', fontWeight: 400, lineHeight: '1.35' }, //18px
@@ -68,8 +71,12 @@ export const theme = {
     },
   },
   zIndex: {
-    nav: 100,
+    nav: 50,
     lightbox: 100,
+    modal: 100,
+  },
+  modal: {
+    backgroundColor: 'rgba(0,0,0,0.45)',
   },
 } as const;
 export type AppTheme = typeof theme;
