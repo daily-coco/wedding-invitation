@@ -29,11 +29,39 @@ export const GalleryThumbnail = styled.button`
   }
 `;
 
-export const GalleryImage = styled.img`
+export const GalleryImage = styled.img<{ $loaded: boolean; $fade: boolean }>`
   display: block;
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
   transform: scale(1);
   transition: transform 0.2s linear;
+  opacity: ${({ $loaded }) => ($loaded ? 1 : 0)};
+
+  /* ✅ 더보기로 추가된 애들만 스르륵 */
+  transition: ${({ $fade }) => ($fade ? 'opacity 250ms ease' : 'none')};
+`;
+
+export const GalleryMoreButton = styled.button`
+  margin: 16px auto 0;
+  display: block;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.03);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(0, 0, 0, 0.35);
+    outline-offset: 3px;
+  }
 `;

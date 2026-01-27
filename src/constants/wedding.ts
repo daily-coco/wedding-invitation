@@ -49,3 +49,16 @@ export const WEDDING_VENUE_INFO = {
   naverMapLink:
     'https://map.naver.com/p/directions/-/14135823.3512038,4522681.1084032,%EC%82%BC%EC%B2%AD%EA%B0%81,11569723,PLACE_POI/-/transit?c=15.00,0,0,0,dh',
 };
+
+export const WEDDING_NOTICE_CONTENT = [
+  {
+    no: 1,
+    title: '대절버스 안내',
+    description: '[10/10 당일 오전 7시 30분] 영등포역 롯데백화점 앞에서 출발 ',
+  },
+  {
+    no: 2,
+    title: '대절버스 승차 위치 주소',
+    description: '서울 영등포구 경인로 846',
+  },
+];

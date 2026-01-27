@@ -25,7 +25,7 @@ export const CalendarTable = styled.table`
 `;
 
 export const TableHeader = styled.thead`
-  background: #f9f9f9;
+  background: #fff;
 `;
 
 export const CalendarBody = styled.div`
@@ -39,16 +39,15 @@ export const TableCaption = styled(Text).attrs({
 `;
 export const TableRow = styled.tr``;
 export const TableHeaderCell = styled.th`
-  padding: 0.5rem;
+  padding: 0.4rem;
   font-weight: bold;
   text-align: center;
 `;
 export const TableTbody = styled.tbody``;
 
 export const TableCell = styled.td<{ isSelected?: boolean }>`
-  padding: 12px;
+  padding: 0.4rem;
   text-align: center;
-  border: 1px solid #eee;
   cursor: pointer;
 
   ${({ isSelected }) =>
@@ -56,8 +55,8 @@ export const TableCell = styled.td<{ isSelected?: boolean }>`
     `
     background: #ffebee;     /* 연한 포인트 색 */
     color: #d32f2f;          /* 글자색 강조 */
-    font-weight: bold;
-    border-radius: 50%;      /* 원형 하이라이트 */
+    font-weight: bold;    /* 원형 하이라이트 */
+
   `}
 
   &:hover {

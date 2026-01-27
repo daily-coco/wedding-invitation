@@ -6,6 +6,9 @@ import Calendar from './components/calendar/Calendar';
 import Gallery from './components/gallery/Gallery';
 import Map from './components/map/Map';
 import AccountInfo from './components/account/AccountInfo';
+import { Footer } from './components/layout/Footer';
+import Notice from './components/notice/Notice';
+
 // effect
 import FadeInSection from './components/inview/FadeInSection';
 import './styles/fade.css';
@@ -21,8 +24,6 @@ import {
   WEDDING_MAP,
   WEDDING_VISUAL_IMAGE,
 } from './constants/wedding';
-import { Footer } from './components/layout/Footer';
-
 function App() {
   const weddingDate = new Date(WEDDING_INFO.dateTime);
 
@@ -57,6 +58,9 @@ function App() {
         </FadeInSection>
         <FadeInSection>
           <AccountInfo />
+        </FadeInSection>
+        <FadeInSection>
+          <Notice />
         </FadeInSection>
         <Footer />
       </MainLayout>
