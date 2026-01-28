@@ -12,6 +12,16 @@ import {
   ModalWrap,
 } from './AccountModal.styled';
 import { Text } from '../text/Text';
+import {
+  AccountBackNum,
+  AccountBank,
+  AccountBankNum,
+  AccountCopyWrap,
+  AccountHolder,
+  AccountPay,
+  ModalRow,
+  ModalRowItem,
+} from '../account/AccountInfo.styled';
 
 type Props = {
   open: boolean;
@@ -116,75 +126,31 @@ function AccountRow(props: {
     }
   };
   return (
-    <div
-      style={{
-        border: '1px solid #eee',
-        borderRadius: 14,
-        padding: 12,
-        display: 'grid',
-        gap: 8,
-      }}
-    >
-      <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}>
-        <div style={{ fontWeight: 700 }}>{holder}</div>
-        <div style={{ fontSize: 12, opacity: 0.7 }}>{bank}</div>
-      </div>
+    <ModalRow>
+      <ModalRowItem>
+        <AccountHolder>{holder}</AccountHolder>
+        <AccountBank>{bank}</AccountBank>
+      </ModalRowItem>
 
-      <button
-        onClick={copy}
-        style={{
-          textAlign: 'left',
-          padding: 0,
-          background: 'transparent',
-          border: 'none',
-          fontSize: 14,
-          cursor: 'pointer',
-        }}
-        aria-label={`${holder} 계좌번호 복사`}
-      >
+      <AccountBackNum onClick={copy} aria-label={`${holder} 계좌번호 복사`}>
         {number}
-      </button>
+      </AccountBackNum>
 
-      <div style={{ display: 'flex', gap: 8 }}>
-        <button
-          onClick={copy}
-          style={{
-            flex: 1,
-            padding: '10px 12px',
-            borderRadius: 12,
-            border: '1px solid #ddd',
-            background: '#fff',
-            fontWeight: 600,
-          }}
-        >
-          복사
-        </button>
+      <AccountCopyWrap>
+        <AccountBankNum onClick={copy}>복사</AccountBankNum>
 
         {transferUrl ? (
-          <a
+          <AccountPay
             href={transferUrl}
             target='_blank'
             rel='noreferrer'
-            style={{
-              flex: 1,
-              textAlign: 'center',
-              padding: '10px 12px',
-              borderRadius: 12,
-              border: '1px solid #111',
-              background: '#111',
-              color: '#fff',
-              fontWeight: 700,
-              textDecoration: 'none',
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
+            style={{}}
           >
             송금하기
-          </a>
+          </AccountPay>
         ) : null}
-      </div>
-    </div>
+      </AccountCopyWrap>
+    </ModalRow>
   );
 }
 
