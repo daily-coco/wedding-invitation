@@ -1,5 +1,3 @@
-import { background } from 'storybook/internal/theming';
-
 export const theme = {
   space: {
     0: '0',
@@ -17,7 +15,8 @@ export const theme = {
     20: '5rem', // 80px
   },
   layout: {
-    maxWidth: '45rem', // 720px (760px = 47.5rem)
+    //maxWidth: '45rem', // 720px (760px = 47.5rem)
+    maxWidth: '26.5625rem', // 414px
     // pagePaddingX: '1.25rem',
     section: '1.25rem',
   },
@@ -28,6 +27,9 @@ export const theme = {
   breakpoint: {
     md: 768,
     lg: 1024,
+  },
+  borderRadius: {
+    public: '10px',
   },
   typography: {
     title: {

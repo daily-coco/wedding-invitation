@@ -1,10 +1,18 @@
 import { Text } from '../text/Text';
-import { VisualSection, Content, DateText } from './VisualImage.styles';
+import {
+  VisualSection,
+  Content,
+  DateText,
+  Protagonist,
+} from './VisualImage.styles';
 interface VisualImageProps {
   imageUrl: string;
   title?: string;
   date?: string;
   place?: string;
+  groom?: string;
+  bride?: string;
+  symbol?: string;
 }
 
 const VisualImage = ({ ...props }: VisualImageProps) => {
@@ -26,6 +34,17 @@ const VisualImage = ({ ...props }: VisualImageProps) => {
             {props.place}
           </Text>
         )}
+        <Protagonist>
+          <Text as='span' variant='text.md'>
+            {props.groom}
+          </Text>
+          <Text as='bride' variant='text.md'>
+            {props.symbol ? props.symbol : '그리고'}
+          </Text>
+          <Text as='bride' variant='text.md'>
+            {props.bride}
+          </Text>
+        </Protagonist>
       </Content>
     </VisualSection>
   );

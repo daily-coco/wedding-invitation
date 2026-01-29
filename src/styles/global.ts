@@ -30,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'GowunDodum', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
     font-weight: 400;
     line-height: 1.5;
-    color: #333;
+    color: #222;
     background: #fff;
     min-width: 260px;
     min-height: 100vh;

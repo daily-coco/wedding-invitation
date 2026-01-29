@@ -7,7 +7,7 @@ export const VisualSection = styled.section<{ $imageUrl: string }>`
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 56.25vh;
   background-image: url(${({ $imageUrl }) => $imageUrl});
   background-position: center center;
   background-size: cover;
@@ -17,8 +17,8 @@ export const DateText = styled(Text).attrs({
   as: 'span',
   variant: 'text.md',
 })`
-  display:block;
-  margin-top:4px';
+  display: block;
+  margin-top: 4px;
 `;
 export const Content = styled.div`
   position: absolute;
@@ -26,3 +26,4 @@ export const Content = styled.div`
   left: 5%;
 `;
 export const Place = styled.span``;
+export const Protagonist = styled.div``;

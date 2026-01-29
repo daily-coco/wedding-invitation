@@ -7,9 +7,12 @@ export const WEDDING_VISUAL_IMAGE = {
 };
 
 export const WEDDING_INFO = {
-  title: '저희 결혼합니다.',
+  title: '저희, 결혼합니다.',
   place: '한옥 마을 야외 예식홀',
   dateTime: '2027-10-10T11:30:00', // ISO 권장
+  groom: '김선호',
+  bride: '고윤정',
+  symbol: '❤️',
 };
 
 export const WEDDING_INTRO = {

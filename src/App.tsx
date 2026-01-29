@@ -35,7 +35,10 @@ function App() {
             imageUrl={WEDDING_VISUAL_IMAGE.topCover}
             title={WEDDING_INFO.title}
             date={formatDotYMD(weddingDate)}
-            place={WEDDING_INFO.place}
+            // place={WEDDING_INFO.place}
+            groom={WEDDING_INFO.groom}
+            bride={WEDDING_INFO.bride}
+            symbol={WEDDING_INFO.symbol}
           />
         </FadeInSection>
         <FadeInSection>
