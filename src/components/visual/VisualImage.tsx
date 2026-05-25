@@ -1,42 +1,53 @@
-import styled from 'styled-components';
-
+import { Text } from '../text/Text';
+import {
+  VisualSection,
+  Content,
+  DateText,
+  Protagonist,
+} from './VisualImage.styles';
 interface VisualImageProps {
   imageUrl: string;
   title?: string;
   date?: string;
   place?: string;
+  groom?: string;
+  bride?: string;
+  symbol?: string;
 }
 
 const VisualImage = ({ ...props }: VisualImageProps) => {
   return (
-    <VisualSection style={{ backgroundImage: `url(${props.imageUrl})` }}>
+    <VisualSection $imageUrl={props.imageUrl}>
       <Content>
-        <Title>{props.title}</Title>
-        <Date>{props.date}</Date>
-        <Place>{props.place}</Place>
+        {props.title && (
+          <Text as='h1' variant='title.lg'>
+            {props.title}
+          </Text>
+        )}
+        {props.date && (
+          <DateText as='time' variant='text.md'>
+            {props.date}
+          </DateText>
+        )}
+        {props.place && (
+          <Text as='span' variant='text.md'>
+            {props.place}
+          </Text>
+        )}
+        <Protagonist>
+          <Text as='span' variant='text.md'>
+            {props.groom}
+          </Text>
+          <Text as='bride' variant='text.md'>
+            {props.symbol ? props.symbol : '그리고'}
+          </Text>
+          <Text as='bride' variant='text.md'>
+            {props.bride}
+          </Text>
+        </Protagonist>
       </Content>
     </VisualSection>
   );
 };
 
 export default VisualImage;
-
-/* styled-components */
-const VisualSection = styled.section`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background-position: center center;
-`;
-const Title = styled.h1``;
-const Date = styled.h2``;
-const Content = styled.div`
-  position: absolute;
-  top: 5%;
-  left: 5%;
-`;
-const Place = styled.span``;

@@ -1,5 +1,27 @@
 import React, { useEffect } from 'react';
 import type { AccountGroup, Side } from '../../types/account-info';
+import {
+  ModalClose,
+  ModalFooter,
+  ModalHead,
+  ModalInner,
+  ModalTabBtnWrap,
+  ModalTabButton,
+  ModalTabContent,
+  ModalTitle,
+  ModalWrap,
+} from './AccountModal.styled';
+import { Text } from '../text/Text';
+import {
+  AccountBackNum,
+  AccountBank,
+  AccountBankNum,
+  AccountCopyWrap,
+  AccountHolder,
+  AccountPay,
+  ModalRow,
+  ModalRowItem,
+} from '../account/AccountInfo.styled';
 
 type Props = {
   open: boolean;
@@ -20,12 +42,12 @@ const AccountModal = ({ open, onClose, groups }: Props) => {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [open, onClose]);
 
-  if (!open) return null; // 이건 뭐지?
+  if (!open) return null;
 
   const current = groups.find((g) => g.side === side) ?? groups[0];
 
   return (
-    <div
+    <ModalWrap
       role='dialog'
       aria-modal='true'
       aria-label='마음 전하는 곳'
@@ -33,62 +55,35 @@ const AccountModal = ({ open, onClose, groups }: Props) => {
         // 딤 클릭 시 닫기
         if (e.target === e.currentTarget) onClose();
       }}
-      style={{
-        zIndex: 9999,
-        position: 'fixed',
-        inset: 0,
-        background: 'rgba(0,0,0,0.45)',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 16,
-      }}
     >
-      <div
-        style={{
-          width: '100%',
-          maxWidth: 420,
-          background: '#fff',
-          borderRadius: 16,
-          padding: 16,
-        }}
-      >
-        <div
-          style={{ display: 'flex', justifyContent: 'space-between', gap: 12 }}
-        >
-          <div>
-            <div style={{ fontSize: 18, fontWeight: 700 }}>마음 전하는 곳</div>
-            <div style={{ fontSize: 12, opacity: 0.7 }}>
-              축하의 마음을 전해주셔서 감사합니다.
-            </div>
-          </div>
-          <button onClick={onClose} aria-label='닫기'>
+      <ModalInner>
+        <ModalHead>
+          <ModalTitle>
+            <Text variant='title.sm'>마음 전하는 곳</Text>
+            <Text variant='text.sm'>축하의 마음을 전해주셔서 감사합니다.</Text>
+          </ModalTitle>
+          <ModalClose onClick={onClose} aria-label='닫기'>
             ✕
-          </button>
-        </div>
-        <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
+          </ModalClose>
+        </ModalHead>
+        <ModalTabBtnWrap style={{}}>
           {groups.map((g) => (
-            <button
+            <ModalTabButton
               key={g.side}
               onClick={() => setSide(g.side)}
               aria-pressed={side === g.side}
               style={{
-                flex: 1,
-                padding: '10px 12px',
-                borderRadius: 12,
-                border: '1px solid #ddd',
-                fontWeight: 600,
                 background: side === g.side ? '#111' : '#fff',
                 color: side === g.side ? '#fff' : '#111',
               }}
             >
               {g.label}
-            </button>
+            </ModalTabButton>
           ))}
-        </div>
+        </ModalTabBtnWrap>
 
         {/* 리스트 */}
-        <div style={{ marginTop: 12, display: 'grid', gap: 10 }}>
+        <ModalTabContent>
           {current?.items.map((item) => (
             <AccountRow
               key={item.id}
@@ -98,16 +93,12 @@ const AccountModal = ({ open, onClose, groups }: Props) => {
               transferUrl={item.transferUrl}
             />
           ))}
-        </div>
-
-        {/* 하단 안내 */}
-        <div
-          style={{ marginTop: 12, fontSize: 12, opacity: 0.7, lineHeight: 1.4 }}
-        >
-          계좌번호를 누르거나 “복사” 버튼을 이용해 복사할 수 있어요.
-        </div>
-      </div>
-    </div>
+        </ModalTabContent>
+        <ModalFooter>
+          계좌번호를 누르거나 '복사' 버튼을 이용해 복사할 수 있어요.
+        </ModalFooter>
+      </ModalInner>
+    </ModalWrap>
   );
 };
 
@@ -135,75 +126,31 @@ function AccountRow(props: {
     }
   };
   return (
-    <div
-      style={{
-        border: '1px solid #eee',
-        borderRadius: 14,
-        padding: 12,
-        display: 'grid',
-        gap: 8,
-      }}
-    >
-      <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}>
-        <div style={{ fontWeight: 700 }}>{holder}</div>
-        <div style={{ fontSize: 12, opacity: 0.7 }}>{bank}</div>
-      </div>
+    <ModalRow>
+      <ModalRowItem>
+        <AccountHolder>{holder}</AccountHolder>
+        <AccountBank>{bank}</AccountBank>
+      </ModalRowItem>
 
-      <button
-        onClick={copy}
-        style={{
-          textAlign: 'left',
-          padding: 0,
-          background: 'transparent',
-          border: 'none',
-          fontSize: 14,
-          cursor: 'pointer',
-        }}
-        aria-label={`${holder} 계좌번호 복사`}
-      >
+      <AccountBackNum onClick={copy} aria-label={`${holder} 계좌번호 복사`}>
         {number}
-      </button>
+      </AccountBackNum>
 
-      <div style={{ display: 'flex', gap: 8 }}>
-        <button
-          onClick={copy}
-          style={{
-            flex: 1,
-            padding: '10px 12px',
-            borderRadius: 12,
-            border: '1px solid #ddd',
-            background: '#fff',
-            fontWeight: 600,
-          }}
-        >
-          복사
-        </button>
+      <AccountCopyWrap>
+        <AccountBankNum onClick={copy}>복사</AccountBankNum>
 
         {transferUrl ? (
-          <a
+          <AccountPay
             href={transferUrl}
             target='_blank'
             rel='noreferrer'
-            style={{
-              flex: 1,
-              textAlign: 'center',
-              padding: '10px 12px',
-              borderRadius: 12,
-              border: '1px solid #111',
-              background: '#111',
-              color: '#fff',
-              fontWeight: 700,
-              textDecoration: 'none',
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
+            style={{}}
           >
             송금하기
-          </a>
+          </AccountPay>
         ) : null}
-      </div>
-    </div>
+      </AccountCopyWrap>
+    </ModalRow>
   );
 }
 

@@ -1,6 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 import { type ImgBasic } from '../../types/common';
-
+import {
+  LightboxBody,
+  LightBoxCaption,
+  LightBoxClose,
+  LightBoxError,
+  LightBoxErrorMsg,
+  LightBoxFigure,
+  LightBoxImg,
+  LightBoxNav,
+  LightBoxReload,
+  LightBoxSkeleton,
+  LightboxWrap,
+} from './Lighbox.styled';
 function getFocusable(container: HTMLElement) {
   const selectors = [
     'a[href]',
@@ -137,13 +149,14 @@ function Lightbox({
   }, [index, images]);
 
   return (
-    <div
+    <LightboxWrap
       ref={dialogRef}
       tabIndex={-1}
-      className={`lightbox ${isClosing ? 'isClosing' : ''}`}
+      //className={`lightbox ${isClosing ? 'isClosing' : ''}`}
+      isClosing={isClosing}
       role='dialog'
       aria-modal='true'
-      aria-label='결혼식 화보 사진 크게 보기'
+      aria-label='결혼식 화보 레이어팝업'
       onMouseDown={(e) => {
         // 배경 클릭 닫기
         if (e.target === e.currentTarget) requestClose();
@@ -152,38 +165,36 @@ function Lightbox({
         if (isClosing && e.target === e.currentTarget) onClose();
       }}
     >
-      <div className='lightbox__content'>
-        <button
+      <LightboxBody>
+        <LightBoxClose
           ref={closeBtnRef}
           className='lightbox__close'
           onClick={requestClose}
           aria-label='닫기'
         >
           ×
-        </button>
+        </LightBoxClose>
 
-        <button className='lightbox__nav' onClick={prev} aria-label='이전 화보'>
+        <LightBoxNav
+          className='lightbox__nav'
+          onClick={prev}
+          aria-label='이전 화보'
+        >
           ‹
-        </button>
+        </LightBoxNav>
 
-        <figure className='lightbox__figure'>
+        <LightBoxFigure className='lightbox__figure'>
           {/* ✅ 스켈레톤 */}
-          {isLoading && (
-            <div className='lightbox__skeleton' aria-hidden='true' />
-          )}
+          {isLoading && <LightBoxSkeleton aria-hidden='true' />}
           {hasError ? (
-            <div className='lightbox__error' role='alert'>
-              이미지를 불러올 수 없어요.
-              <button
-                type='button'
-                onClick={() => onChange(index)}
-                aria-label='다시 시도'
-              >
+            <LightBoxError role='alert'>
+              <LightBoxErrorMsg>이미지를 불러올 수 없어요.</LightBoxErrorMsg>
+              <LightBoxReload onClick={() => onChange(index)}>
                 다시 시도
-              </button>
-            </div>
+              </LightBoxReload>
+            </LightBoxError>
           ) : (
-            <img
+            <LightBoxImg
               src={current.src}
               alt={current.fileBase}
               className={`lightbox__img ${isLoading ? 'isLoading' : ''}`}
@@ -194,17 +205,21 @@ function Lightbox({
               }}
             />
           )}
-          <figcaption>
+          {/* <LightBoxCaption>
             {current.fileBase}{' '}
             {current.order !== null ? `(order: ${current.order})` : ''}
-          </figcaption>
-        </figure>
+          </LightBoxCaption> */}
+        </LightBoxFigure>
 
-        <button className='lightbox__nav' onClick={next} aria-label='다음 화보'>
+        <LightBoxNav
+          className='lightbox__nav'
+          onClick={next}
+          aria-label='다음 화보'
+        >
           ›
-        </button>
-      </div>
-    </div>
+        </LightBoxNav>
+      </LightboxBody>
+    </LightboxWrap>
   );
 }
 

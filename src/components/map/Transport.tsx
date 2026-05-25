@@ -1,6 +1,14 @@
 // components/Transport.tsx
 import type { TransportType } from '../../constants/transport';
 import { WEDDING_VENUE_NAV } from '../../constants/transport';
+import {
+  ItemDesc,
+  ItemTitle,
+  TransportItem,
+  TransportList,
+  TransportTitle,
+  TransportWrap,
+} from './map.styled';
 
 type Props = {
   transportType: TransportType;
@@ -19,8 +27,8 @@ export function Transport({ transportType }: Props) {
   if (!data) return null;
 
   return (
-    <section aria-label={`${LABEL[transportType]} 안내`}>
-      <h3>{LABEL[transportType]}</h3>
+    <TransportWrap aria-label={`${LABEL[transportType]} 안내`}>
+      <TransportTitle>{LABEL[transportType]}</TransportTitle>
 
       {/* 단문형 */}
       {/* {'content' in data && <p>{data.contents}</p>} */}
@@ -29,15 +37,15 @@ export function Transport({ transportType }: Props) {
       {/* 리스트형 */}
       {/* {'contentList' in data && ( */}
       {data.contentList && (
-        <ul>
+        <TransportList>
           {data.contentList.map((item) => (
-            <li key={item.title}>
-              <strong>{item.title}</strong>
-              <p>{item.contents}</p>
-            </li>
+            <TransportItem key={item.title}>
+              <ItemTitle>{item.title}</ItemTitle>
+              <ItemDesc>{item.contents}</ItemDesc>
+            </TransportItem>
           ))}
-        </ul>
+        </TransportList>
       )}
-    </section>
+    </TransportWrap>
   );
 }

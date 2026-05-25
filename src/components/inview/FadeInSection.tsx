@@ -16,13 +16,14 @@ const FadeInSection = ({
 }: Props) => {
   const { ref, inView } = useInView<HTMLDivElement>({
     threshold: 0.12,
-    rootMargin: '0px 0px -12% 0px',
+    rootMargin: '0px 0px -6% 0px',
     once,
   });
 
   return (
     <div
       ref={ref}
+      data-fade-section
       className={[
         'fade-section',
         inView ? 'is-visible' : '',
