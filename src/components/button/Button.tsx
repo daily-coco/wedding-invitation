@@ -12,5 +12,5 @@ const StyleButton = styled.button`
 type ButtonProps = PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>;
 
 export const Button = ({ children, ...props }: ButtonProps) => {
-  return <StyleButton>{children}</StyleButton>;
+  return <StyleButton {...props}>{children}</StyleButton>;
 };

@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { type ImgBasic } from '../../types/common';
 import {
   LightboxBody,
-  LightBoxCaption,
   LightBoxClose,
   LightBoxError,
   LightBoxErrorMsg,
@@ -66,8 +65,7 @@ function Lightbox({
     bodyPrevOverflowRef.current = document.body.style.overflow;
     bodyPrevPaddingRef.current = document.body.style.paddingRight;
 
-    const scrollbarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = 'hidden';
 
     if (scrollbarWidth > 0) {
@@ -175,11 +173,7 @@ function Lightbox({
           ×
         </LightBoxClose>
 
-        <LightBoxNav
-          className='lightbox__nav'
-          onClick={prev}
-          aria-label='이전 화보'
-        >
+        <LightBoxNav className='lightbox__nav' onClick={prev} aria-label='이전 화보'>
           ‹
         </LightBoxNav>
 
@@ -189,9 +183,7 @@ function Lightbox({
           {hasError ? (
             <LightBoxError role='alert'>
               <LightBoxErrorMsg>이미지를 불러올 수 없어요.</LightBoxErrorMsg>
-              <LightBoxReload onClick={() => onChange(index)}>
-                다시 시도
-              </LightBoxReload>
+              <LightBoxReload onClick={() => onChange(index)}>다시 시도</LightBoxReload>
             </LightBoxError>
           ) : (
             <LightBoxImg
@@ -211,11 +203,7 @@ function Lightbox({
           </LightBoxCaption> */}
         </LightBoxFigure>
 
-        <LightBoxNav
-          className='lightbox__nav'
-          onClick={next}
-          aria-label='다음 화보'
-        >
+        <LightBoxNav className='lightbox__nav' onClick={next} aria-label='다음 화보'>
           ›
         </LightBoxNav>
       </LightboxBody>
