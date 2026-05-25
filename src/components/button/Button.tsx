@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import type { PropsWithChildren, ButtonHTMLAttributes } from 'react';
 
 const StyleButton = styled.button`
   background: #0070f3;
@@ -8,7 +9,8 @@ const StyleButton = styled.button`
   border: none;
   cursor: pointer;
 `;
+type ButtonProps = PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>;
 
-export const Button = ({ children }: { children: React.ReactNode }) => {
+export const Button = ({ children, ...props }: ButtonProps) => {
   return <StyleButton>{children}</StyleButton>;
 };
